@@ -5,3 +5,5 @@ git clone url_repositorio - Clona el repositorio para poder modificarlo y subir 
 git add nombre_archivo - Añade al repositorio y carpeta el archivo al que le aplicas el comando add.
 git commit -m "Inserte su mensaje aquí".
 git push - Con este código metes o subes al repositorio el archivo en cuestión.
+git rm - Elimina un archivo de la carpeta y del repositorio git.
+git rm -r - Elimina una carpeta del gitHub.
