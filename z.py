@@ -17,3 +17,5 @@ def fibo():
         i = t
         suma.append(j)
     print(suma)
+    
+fibo()
