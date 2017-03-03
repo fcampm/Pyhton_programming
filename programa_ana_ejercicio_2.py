@@ -9,7 +9,7 @@ def main():
     n = int(input("¿Cuántos usuarios quieres?\n")) # Pide al usuario el número de datos que el ususario va a meter.
     
     for c in range(n): # Se hace un ciclo for desde 0 hasta n; donde n es el input que el usuario metio arriba.
-        w = int(input("¿Cuántos kilómetros viajarás?\n")) # Pide al usuario el la cantidad de kilómetros que va a viajar.
+        w = float(input("¿Cuántos kilómetros viajarás?\n")) # Pide al usuario el la cantidad de kilómetros que va a viajar.
         q = input("¿Qué tipo de servicio requieres? (X, XL, BLACK, SUV)\n") # Pide al usuario el servicio que va a usar.
         if q.upper() == "X": # Se hace una validación; en caso de que el input q sea "X" asigna el valor de uber_costo con 7.00
             uber_costo = 7.00 
