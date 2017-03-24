@@ -20,12 +20,5 @@ for i in range(n):
     x2 = next(nums)
     y2 = next(nums)
     res = 0
-    if x >= x2 and y >= y2:
-        res += (x-x2) + (y-y2)
-    if x >= x2 and y2 >= y:
-        res += (x-x2) + (y2-y)
-    if x2 >= x and y >= y2:
-        res += (x2-x) + (y-y2)
-    if x2 >= x and y2 >= y:
-        res += (x2-x) + (y2-y)
+    res += abs(x - x2) + abs(y - y2)
     print(res)
