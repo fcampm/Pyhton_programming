@@ -10,25 +10,30 @@ PC = 0
 left = True
 AC = 0
 MQ = 0
+memory=[]
+listing=[]
 #===================================================================================================================================#
 def readdatos_txt():
     with open ("datos.txt", 'r') as datos_list:
+        global memory
         memory = datos_list.readlines()
-        return memory
+
 #===================================================================================================================================#
 def readprg1_txt():
     #name = "prg1.txt"
     #print ("Opening document", name, "this will take some time...")
     with open("prg1.txt", 'r') as instruction_list:
         reading_inst = instruction_list.readlines()
-        listing = reading_inst[0]
-        return listing
+        global listing
+        listing = reading_inst
+
 #===================================================================================================================================#
 def read_instructions(OP, AD):
     global PC
     global left
     global AC
     global MQ
+    global memory
 
 
     AD = int(AD, 16)
@@ -62,20 +67,24 @@ def read_instructions(OP, AD):
     # Begin unconditional branch
 
     # JUMP M(X, 0:19)
-#    if (OP == "0D"):
-        # Implement
+    if (OP == "0D"):
+        PC = AD
+        left = True
     # JUMP M(X, 20:39)
-#    if (OP == "0E"):
-        # Implement
+    if (OP == "0E"):
+        PC = AD
+        left = False
 
     # Begin conditional branch
 
     # JUMP + M(X, 0:19)
-#    if (OP == "0F"):
-        # Implement
+    if (OP == "0F" and AC >= 0):
+        PC = AD
+        left = True
     # JUMP + M(X, 20:39)
-#    if (OP == "10"):
-        # Implement
+    if (OP == "10" and AC >= 0):
+        PC = AD
+        left = False
 
     # Begin Arithmetic
 
@@ -109,11 +118,13 @@ def read_instructions(OP, AD):
     # Begin Address modify
 
     # STOR M(X, 8:19)
-#    if (OP == "12"):
-        # Implement
+    if (OP == "12"):
+        left = True
+        memory[AD] = AC
     # STOR M(X, 28:39)
-#    if (OP == "13"):
-        # Implement
+    if (OP == "13"):
+        left = False
+        memory[AD] = AC
 #===================================================================================================================================#
 def complemetA2(decimal):
     flag1exists = False
@@ -141,12 +152,27 @@ def complemetA2(decimal):
 def main():
     global PC
     global left
+
     readprg1_txt()
+    content = listing[0]
 
 
-    #while (PC != len(reading_inst)):
-    #    PC += 1
+    while (PC != len(listing)):
+        PC += 1
+        OP1 = content[0:2]
+        AD1 = content[2:5]
+        OP2 = content[5:7]
+        AD2 = content[7:10]
+        if (left == True):
+            left = False
+            read_instructions(OP1, AD1)
 
+        if (left == False):
+            left = True
+            read_instructions(OP2, AD2)
+
+        if len(listing) != PC:
+            content =  listing[PC]
 
 
 main()

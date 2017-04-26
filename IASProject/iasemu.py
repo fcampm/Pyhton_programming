@@ -56,7 +56,9 @@ def main():
                 print("Number ", option2, " it's not a valid option, returning to main menu")
 
         elif option == 2:
+            print("\n", "       Hexadecimal         ")
             menu2()
+            print("\n")
             option2 = int(input("Select and option: "))
             if option2 == 1:
                 iasemu2.main()
@@ -65,6 +67,7 @@ def main():
             elif option2 == 3:
                 main()
         elif option == 3:
+            print("\n", "         Decimal           ")
             menu2()
             option2 = int(input("Select and option: "))
             if option2 == 1:
