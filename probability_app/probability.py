@@ -31,7 +31,7 @@ def start():
     if (len(sample) % 2 == 0):
         mediana = (sample[(n-1)/2] + sample[((n-1)/2)+1])/2
     else:
-        mediana = sample[n/2]
+        mediana = sample[((n+1)/2)-1]
     print("La mediana es: " + str(mediana))
 
 # Definicion donde viene los datos del desarrollador.
